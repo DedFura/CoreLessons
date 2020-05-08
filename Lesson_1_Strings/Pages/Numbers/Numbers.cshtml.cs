@@ -15,7 +15,7 @@ namespace Lesson_1_Strings.Pages.Numbers
         [BindProperty] public bool StackOverflowCheck { get; set; } // Вроде как есть класс StackOverflowException, но больше для полноценных тестов try catch,
         // и для полноценной отлакди программы, по этому такой велосипед
 
-        [BindProperty] public sbyte SbyteAnswer { get; set; }
+
 
 
         public void OnGet()
@@ -41,6 +41,17 @@ namespace Lesson_1_Strings.Pages.Numbers
             {
                 Answer = (sbyte)(firstNum + secondNum);
                 if ((firstNum + secondNum) > sbyte.MaxValue) StackOverflowCheck = true;
+            }
+        }
+        public void OnPostAdditionDecimalMethod(string? firstNum, string? secondNum)
+        {
+            
+            if (firstNum != null && secondNum != null)
+            {
+                decimal decFirst = decimal.Parse(firstNum, new System.Globalization.CultureInfo("ru-ru"));
+                decimal decSecond = decimal.Parse(secondNum, new System.Globalization.CultureInfo("ru-ru"));
+                Answer = (decimal)(decFirst+decSecond);
+                if ((decFirst + decSecond) > decimal.MaxValue) StackOverflowCheck = true;
             }
         }
 
