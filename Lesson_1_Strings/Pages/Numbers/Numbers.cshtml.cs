@@ -12,6 +12,8 @@ namespace Lesson_1_Strings.Pages.Numbers
         // Так, как у нас будет возврат разных типов, то создаём свойство типа Object
         // Что делает его универсальным для всех ответов
         [BindProperty] public object Answer { get; set; }
+        [BindProperty] public bool StackOverflowCheck { get; set; } // Вроде как есть класс StackOverflowException, но больше для полноценных тестов try catch,
+        // и для полноценной отлакди программы, по этому такой велосипед
 
         [BindProperty] public sbyte SbyteAnswer { get; set; }
 
@@ -33,5 +35,15 @@ namespace Lesson_1_Strings.Pages.Numbers
                 Answer = (long) (firstNum + secondNum);
             }
         }
+        public void OnPostAdditionSbyteMethod(sbyte? firstNum, sbyte? secondNum)
+        {
+            if (firstNum != null && secondNum != null)
+            {
+                Answer = (sbyte)(firstNum + secondNum);
+                if ((firstNum + secondNum) > sbyte.MaxValue) StackOverflowCheck = true;
+            }
+        }
+
+
     }
 }
