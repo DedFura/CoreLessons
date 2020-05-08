@@ -125,6 +125,49 @@
             }
         </div>
 
+        @*Paste the task 4*@
+        <div class="alert alert-info">
+            <p>
+                <h5 class="text-center">Задание #4</h5>
+                Написать программу, которая будет принимать из 2-х полей для ввода 2 числа типа <span class="text-danger">string</span>,преобразовать в тип decimal, скложить их и вернуть ответ в <span class="text-danger">decimal</span>.<br />
+                Тип поля ввода должен быть text<br />
+                Ввести в одно из полей какой-нибудь символ (не цифру) и обработать исключение методом TryParse.
+            </p>
+
+            <form method="post" asp-page-handler="ExceptionAdditionDecimalMethod" class="form-group">
+                <div class="row">
+                    <div class="col text-left">
+                        <label class="col-form-label mr-2">Введите первое число: </label>
+                        <input type="text" name="firstNum" />
+                    </div>
+                    <div class="col text-right">
+                        <label class="col-form-label mr-2">Введите второе число: </label>
+                        <input type="text" name="secondNum" />
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-success">Submit</button>
+            </form>
+            @if (Model.Answer != null && Model.Answer is decimal)
+            {
+                <div class="jumbotron text-center">
+                    Answer is: @Model.Answer , this type is: @Model.Answer.GetType();
+                </div>
+            }
+            else if (Model.Answer != null)
+            {
+                <div class="jumbotron text-center">
+                     @Model.Answer
+                </div>
+            }
+
+            @if (Model.StackOverflowCheck)
+            {
+                <div class="alert alert-info">
+                    <p> Произошло переполнение стека </p>
+                </div>
+            }
+        </div>
+
         @*-------------------------------------------*@
     </div>
 </div>

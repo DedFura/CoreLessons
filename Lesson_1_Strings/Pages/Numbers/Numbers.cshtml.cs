@@ -54,6 +54,25 @@ namespace Lesson_1_Strings.Pages.Numbers
                 if ((decFirst + decSecond) > decimal.MaxValue) StackOverflowCheck = true;
             }
         }
+        public void OnPostExceptionAdditionDecimalMethod(string? firstNum, string? secondNum)
+        {
+            decimal decFirst = 0.0M;
+            decimal decSecond = 0.0M;
+
+            if (firstNum != null && secondNum != null && (decimal.TryParse(firstNum, out decFirst)) && (decimal.TryParse(secondNum, out decFirst)))
+            {
+                decFirst = decimal.Parse(firstNum, new System.Globalization.CultureInfo("ru-ru"));
+                
+                decSecond = decimal.Parse(secondNum, new System.Globalization.CultureInfo("ru-ru"));
+
+                 Answer = (decimal)(decFirst + decSecond);
+                if ((decFirst + decSecond) > decimal.MaxValue) StackOverflowCheck = true;
+            }
+            else
+            {
+                Answer = "Неверно введены значения";
+            }
+        }
 
 
     }
