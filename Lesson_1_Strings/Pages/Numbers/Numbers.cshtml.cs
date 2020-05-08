@@ -73,7 +73,25 @@ namespace Lesson_1_Strings.Pages.Numbers
                 Answer = "Неверно введены значения";
             }
         }
+        public void OnPostAdditionDecimalToIntegerMethod(string? firstNum, string? secondNum)
+        {
+            decimal decFirst = 0.0M;
+            decimal decSecond = 0.0M;
 
+            if (firstNum != null && secondNum != null && (decimal.TryParse(firstNum, out decFirst)) && (decimal.TryParse(secondNum, out decFirst)))
+            {
+                decFirst = decimal.Parse(firstNum, new System.Globalization.CultureInfo("ru-ru"));
+
+                decSecond = decimal.Parse(secondNum, new System.Globalization.CultureInfo("ru-ru"));
+
+                Answer = (int)(decFirst + decSecond);
+                if ((decFirst + decSecond) != (Convert.ToInt32(Answer))) StackOverflowCheck = true;
+            }
+            else
+            {
+                Answer = "Неверно введены значения";
+            }
+        }
 
     }
 }

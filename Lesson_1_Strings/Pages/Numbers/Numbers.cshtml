@@ -167,7 +167,47 @@
                 </div>
             }
         </div>
+        @*Paste the task 5*@
+    <div class="alert alert-info">
+        <p>
+            <h5 class="text-center">Задание #5</h5>
+            Написать программу, которая будет принимать из 2-х полей для ввода 2 числа типа <span class="text-danger">decimal</span>, складывать их и, конвертировать в тип int, вернуть ответ в <span class="text-danger">int</span>.<br />
+            Объяснить причину появления "незапланированного" результата.
+        </p>
 
+        <form method="post" asp-page-handler="AdditionDecimalToIntegerMethod" class="form-group">
+            <div class="row">
+                <div class="col text-left">
+                    <label class="col-form-label mr-2">Введите первое число: </label>
+                    <input type="text" name="firstNum" />
+                </div>
+                <div class="col text-right">
+                    <label class="col-form-label mr-2">Введите второе число: </label>
+                    <input type="text" name="secondNum" />
+                </div>
+            </div>
+            <button type="submit" class="btn btn-success">Submit</button>
+        </form>
+        @if (Model.Answer != null && Model.Answer is int)
+        {
+            <div class="jumbotron text-center">
+                Answer is: @Model.Answer , this type is: @Model.Answer.GetType();
+            </div>
+        }
+        else if (Model.Answer != null)
+        {
+            <div class="jumbotron text-center">
+                @Model.Answer
+            </div>
+        }
+
+        @if (Model.StackOverflowCheck)
+        {
+            <div class="alert alert-info">
+                <p> Используется явное приведение типов, из-за чего теряются данные </p>
+            </div>
+        }
+    </div>
         @*-------------------------------------------*@
     </div>
 </div>
